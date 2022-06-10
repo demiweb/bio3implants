@@ -68,6 +68,7 @@ function addCoutingDelay() {
         })
     }
 }
+
 addCoutingDelay();
 
 // scroll animations
@@ -94,6 +95,7 @@ function scrollAnimations() {
         }
     }
 }
+
 scrollAnimations();
 
 //anim stage all
@@ -113,7 +115,7 @@ function scrollAnimationsStage() {
                 if (entry.isIntersecting) {
                     for (let i = 0; i < len; i++) {
                         // console.log(eles[1]);
-                        eles[i].style.animationDelay = (entry.target.dataset.animDelay * i)  + 'ms';
+                        eles[i].style.animationDelay = (entry.target.dataset.animDelay * i) + 'ms';
                         eles[i].style.animationDuration = entry.target.dataset.animDuration + 'ms';
                         eles[i].style.animationName = entry.target.dataset.anim;
                     }
@@ -129,6 +131,7 @@ function scrollAnimationsStage() {
         }
     }
 }
+
 scrollAnimationsStage();
 
 
@@ -167,6 +170,18 @@ function changeTab() {
 }
 
 changeTab();
+let moreTabs = [...document.querySelectorAll('.more-tabs')];
+
+function showMoreTabs() {
+    if (moreTabs.length) {
+        moreTabs.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                btn.closest('.tab-row').classList.add('more');
+            })
+        })
+    }
+}
+showMoreTabs();
 
 //show seo
 let hiddenCarr = [...document.querySelectorAll('.show-text')];
@@ -271,6 +286,7 @@ function hoverCardMed() {
 
 //swiper
 let swipr = document.querySelector('.swipr-news');
+
 function swiprCont() {
     if (swipr) {
         let cont = swipr.querySelector('.news-slide-cont');
@@ -282,6 +298,8 @@ function swiprCont() {
             spaceBetween: 20,
             slidesPerView: 'auto',
             freeMode: true,
+            centerInsufficientSlides: true,
+            // centeredSlides: true,
             watchSlidesProgress: true,
         });
 
@@ -298,7 +316,26 @@ function swiprCont() {
         });
     }
 }
+
 swiprCont();
+
+//btn mod menu list
+
+let btnMob = [...document.querySelectorAll('.btn-mob')];
+
+function openCloseMenuList() {
+    if (btnMob.length) {
+        btnMob.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                btn.closest('.profile-menu').classList.toggle('open');
+            })
+        })
+    }
+}
+
+openCloseMenuList();
 
 
 
